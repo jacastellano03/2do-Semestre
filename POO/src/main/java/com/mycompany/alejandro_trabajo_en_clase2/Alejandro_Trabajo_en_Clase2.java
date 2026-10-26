@@ -108,6 +108,42 @@ public class Alejandro_Trabajo_en_Clase2 {
             default -> "Dia invalido";
         };
 
+                int saldo = 100;
+        while (saldo > 0) {
+            saldo -= 30;
+        }
+        System.out.println(saldo);      // -20  
+        
+        System.out.println("----------------");
+        
+        for (int i = 1; i <= 10; i++) {
+        System.out.println(i + " ");
+        }
+        
+        System.out.println("----------------");
+        
+        for (int i = 0; i < 5; i++) {
+        System.out.println(i + " ");
+        }
+        
+        System.out.println("----------------");
+                
+        for (int i = 1; i <= 5; i++) {
+        System.out.println(i + " ");
+        }
+        
+        System.out.println("----------------");
+        
+        for (int i = 10; i > 0; i -=3 ) {
+        System.out.println(i + " ");
+        }
+        
+        System.out.println("----------------");
+        
+        for (int i = 0; i < 20; i += 5 ) {
+        System.out.println(i + " ");
+        }
+
     }
    
 }
