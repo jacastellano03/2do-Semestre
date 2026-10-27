@@ -41,13 +41,3 @@ anio_salida int not null,
 precio numeric(6,2),
 unique (id_juego, id_consola)
 );
-
-
-
-
-
-
-
-
-
-
