@@ -41,3 +41,36 @@ anio_salida int not null,
 precio numeric(6,2),
 unique (id_juego, id_consola)
 );
+
+--Apuntes17/11/26
+
+SELECT * 
+FROM clientes 
+ORDER BY nombre;
+
+select count(*) FROM clientes;
+SELECT COUNT(*) FROM detalle_pedido;
+SELECT COUNT(*) FROM mesas;
+SELECT COUNT(*) FROM meseros;
+SELECT COUNT(*) FROM pedidos;
+SELECT COUNT(*) FROM platos;
+
+SELECT  nombre, apellido, correo
+FROM clientes
+ORDER BY id_cliente;
+
+-- Condicionales
+SELECT nombre, apellido, correo
+FROM clientes
+WHERE (nombre = 'Luis' 
+	OR apellido = 'luis') 
+	AND apellido = 'Vega';				-- Se debe usar comillas simples
+
+
+SELECT 
+	m.nombre, AS nombre_mesero,
+	m.apellido, AS apellido_mesero,
+	c.nombre, AS nombre_cliente,
+	c.apellido, AS apellido_cliente 
+FROM meseros AS m, clientes AS c;
+WHERE (m.nombre = 'Luis' OR m.nombre = 'luis' OR c.nombre = 'Luis' OR c.nombre = 'luis')
