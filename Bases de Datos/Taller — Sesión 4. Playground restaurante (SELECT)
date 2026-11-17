@@ -1,0 +1,121 @@
+-- 1. Lista nombre, categoría y precio de los platos disponibles, del más barato al más caro.
+
+SELECT nombre, categoria, precio
+FROM platos
+WHERE disponible = TRUE
+ORDER BY precio ASC;
+
+-- 2. ¿Qué meseros están activos en el turno de la mañana? (nombre, apellido, turno).
+
+SELECT nombre, apellido, turno
+FROM meseros
+WHERE activo = TRUE
+	AND turno = 'mañana';
+
+-- 3. ¿Qué mesas de terraza tienen capacidad 6 o más? (número, capacidad, zona).
+
+SELECT numero, capacidad, zona
+FROM mesas
+WHERE zona = 'terraza'
+	AND capacidad >= 6;
+
+-- 4. ¿Qué platos tienen en el nombre la palabra Sopa? (usa LIKE).
+
+SELECT nombre, categoria, precio
+FROM platos
+WHERE nombre ILIKE '%sopa%';
+
+-- 5. ¿Qué pedidos están en estado abierto? (id, fecha, estado; ordena por fecha).
+
+SELECT id_pedido, fecha_pedido, estado
+FROM pedidos
+WHERE estado = 'abierto'
+ORDER BY fecha_pedido ASC;
+
+-- 6. ¿Qué clientes se llaman Ana o tienen apellido Vega? (id, nombre, apellido, correo).
+
+SELECT id_cliente, nombre, apellido, correo
+FROM clientes
+WHERE nombre = 'Ana' OR apellido = 'Vega';
+
+
+-- 7. Platos categoría bebida con precio menor que 4.00; ordena por precio.
+
+SELECT nombre, categoria, precio
+FROM platos
+WHERE categoria = 'bebida'
+AND precio < 4.00
+ORDER BY precio ASC;
+
+-- 8. Meseros del turno noche que están inactivos.
+
+SELECT id_mesero, nombre, apellido, turno, activo
+FROM meseros
+WHERE turno = 'noche'
+AND activo = FALSE;
+
+-- 9. Mesas con capacidad exactamente 8, cualquier zona; ordena por número de mesa.
+
+SELECT numero, capacidad, zona
+FROM mesas
+WHERE capacidad = 8
+ORDER BY numero ASC;
+
+-- 10. Platos categoría fuerte que no están disponibles.
+
+SELECT nombre, categoria, precio, disponible
+FROM platos
+WHERE categoria = 'fuerte'
+AND disponible = FALSE;
+
+-- 11. Clientes con correo en NULL (muestra nombre y apellido).
+
+SELECT nombre, apellido, correo
+FROM clientes
+WHERE correo IS NULL;
+
+-- 12. Líneas de detalle_pedido con cantidad mayor que 2 (id detalle, id pedido, cantidad).
+
+SELECT id_detalle, id_pedido, cantidad
+FROM detalle_pedido
+WHERE cantidad > 2;
+
+-- 13. Pedidos en estado cancelado del mes de octubre de 2026 (usa fecha_pedido).
+
+SELECT id_pedido, fecha_pedido, estado
+FROM pedidos
+WHERE estado = 'cancelado'
+AND fecha_pedido >= '2026-10-01'
+AND fecha_pedido <= '2026-10-31';
+
+-- 14. Platos cuyo nombre contiene Hamburguesa (LIKE).
+
+SELECT nombre, categoria, precio
+FROM platos
+WHERE nombre ILIKE '%Hamburguesa%';
+
+-- 15. Meseros apellido que empieza con M (LIKE 'M%').
+
+SELECT nombre, apellido, turno
+FROM meseros
+WHERE nombre LIKE 'M%';
+
+-- 16. Mesas zona salón o barra con capacidad al menos 4 (OR + AND).
+
+SELECT numero, capacidad, zona
+FROM mesas
+WHERE (zona = 'salón' OR zona = 'barra')
+AND capacidad >= 4;
+
+-- 17. Diez pedidos más recientes por fecha_pedido (columnas que elijan; solo tabla pedidos).
+
+SELECT id_pedido, fecha_pedido, estado
+FROM pedidos
+ORDER BY fecha_pedido DESC, id_pedido DESC   -- id desempata pedidos de la misma fecha
+LIMIT 10;                                     -- devuelve solo las 10 primeras filas
+
+-- 18. Clientes con teléfono que contiene 09 al inicio (LIKE '09%').
+
+SELECT nombre, apellido, telefono
+FROM clientes
+WHERE telefono LIKE '09%';
